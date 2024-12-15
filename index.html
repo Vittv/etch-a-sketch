@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Etch a Sketch</title>
+</head>
+<body>
+    <h1>Etch a Sketch</h1>
+    <div class="container">
+        <div class="input-box">
+            <input
+                type="text"
+                class="numberInput"
+                maxlength="3"
+                max="100"
+                placeholder="Enter a number (<=100)"
+                oninput="validateInput(this)">
+            <button>Make squares</button>
+            <button>Reset (16 x 16)</button>
+            <div class="current current-input">Dimensions:</div>
+        </div>
+        <div class="grid-container">
+            <div class="new-grid-container">
+                <!-- Where the generated div goes -->   
+            </div>
+        </div>
+        <div class="mode-box">
+            <button>Random Colors</button>
+            <button>Opacity Increase</button>
+            <button>Random + Opacity</button>
+            <div class="current current-mode">Mode:</div>
+        </div>
+    </div>
+    <script src="src/script.js"></script>
+</body>
+</html>
