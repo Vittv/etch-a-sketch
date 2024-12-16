@@ -57,6 +57,7 @@ button {
     padding: 10px;
 }
 
+/* grid */
 .grid-container {
     display: flex;
     flex-direction: column;
@@ -64,20 +65,46 @@ button {
     align-items: center;
     height: 700px;
     width: 700px;
-    border: 4px solid rgb(253, 23, 23);
 }
 
 .new-grid-container {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    width: 700px;
+    height: 700px;
 }
 
 .new-grid {
-    background-color: rgb(184, 184, 184);
-    width: 30px;
-    height: 30px;
-    border: 2px solid rgb(41, 41, 41);
+    background-color: rgb(227, 227, 227);
+    border: 1px solid rgb(145, 145, 145);
+}
+
+/* footer */
+footer {
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(35, 36, 39);
+    color: white;
+    width: 100%;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 14px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.github-icon {
+    margin-left: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.github-icon:hover {
+    color: rgb(129, 129, 129);
 }
