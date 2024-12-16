@@ -61,21 +61,30 @@ function makeNewGrid(totalDiv) {
             square.style.height = `${squareSize}px`;
         });
     };
-    // TODO: Starting to implement the color change on hover logic
-    // still got to add the event listener to it
-    function changeColorOnHover(colorChoice) {
-        const newGrid = document.querySelector(".new-grid");
-        newGrid.addEventListener("hover", () => {
-            const defaultColor = `black`;
-            colorChoice = defaultColor;
-            document.querySelector(".new-grid").style.color = `${colorChoice}`;
+    // Add hover effect to all squares
+    // This is working, now all we have left to do is add the different modes:
+    // Random colors
+    // Opacity increase
+    // Random colors + opacity increase
+
+    // I think a more proper way to do it would be to add a "mode" function or variable
+    // that can turn itself true or false, depending on which buttons are clicked
+    // then the true mode is the one currently on, while the falsy modes don't do anything
+    // that way we can have an easy way to distinguish which colors to use for the hovering
+    // and maybe it would look more organized
+    function changeColorOnHover() {
+        const allSquares = document.querySelectorAll(".new-grid"); // Select all squares
+        allSquares.forEach(square => {
+            square.addEventListener("mouseover", () => {
+                square.style.backgroundColor = "black"; // Change color on hover
+            });
         });
-
-
-
     }
+
     // Make sure it fits inside the grid-container
     resizeSquares(totalDiv);
+
+    // Change color on hover *after* grid creation
     changeColorOnHover();
 
 };
@@ -103,13 +112,14 @@ makeNewGrid(totalDiv);
 // Todo:
 // 1. Make the input change the number of squares made                           DONE
 // 2. Make the squares change size to fit in the 700x700 grid-container we made  DONE
-// 3. Implement hover for default color
-// 3. Implement hover for changing color
-// 4. Implement Random Colors function
-// 5. Implement Opacity Increase function
-// 6. Implement Random Colors + Opacity Increase function
-// 7. Finish design
-// 8. Push and enable live preview 
+// 3. Implement hover for default color (we can either change classes to do this, or directly change the div's background color through javascript)
+// 4. Implement hover for changing color
+// 5. Implement Random Colors function
+// 6. Implement Opacity Increase function
+// 7. Implement Random Colors + Opacity Increase function
+// 8. Finish design
+// 9. We could also add hotkeys to each button on the interface
+// 10. Push and enable live preview 
 
 /*
 newInput.addEventListener("keydown", (e) => {
