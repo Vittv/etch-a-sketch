@@ -60,6 +60,18 @@ randomColorButton.addEventListener("click", () => {
 // Clear board
 clearButton.addEventListener("click", () => {
     makeNewGrid(totalDiv, currentColorMode);
+});
+
+// Change to opacity black
+opacityIncreaseButton.addEventListener("click", () => {
+    makeNewGrid(totalDiv, "opacity-black");
+    document.querySelector(".current-color-mode").innerText = `Mode: Opacity Black`;
+});
+
+// Change to opacity random color
+randomAndOpacityButton.addEventListener("click", () => {
+    makeNewGrid(totalDiv, "random-opacity");
+    document.querySelector(".current-color-mode").innerText = `Mode: Opacity Random`;
 })
 
 // Generate a random RGB color
@@ -87,6 +99,7 @@ function makeNewGrid(totalDiv, colorMode = "black") {
     for (let i = 0; i < totalDiv * totalDiv; i++ ) {
         const newGrid = document.createElement("div");
         newGrid.className = "new-grid";
+        newGrid.setAttribute("data-opacity", 0); // Initialize opacity at 0
         gridContainer.appendChild(newGrid)
     };
     // Resize every square dynamically so it fits inside the given field
@@ -100,29 +113,58 @@ function makeNewGrid(totalDiv, colorMode = "black") {
         });
     };
 
-    // Hover functions
-    function changeColorOnHover() {
-        const allSquares = document.querySelectorAll(".new-grid"); // Select all squares
+    // Black or Random color hover effect
+    function changeColorOnHover(mode) {
+        const allSquares = document.querySelectorAll(".new-grid");
         allSquares.forEach(square => {
             square.addEventListener("mouseover", () => {
-                square.style.backgroundColor = "black"; // Change color on hover
+                square.style.backgroundColor =
+                    mode === "black" ? "black" : getRandomColor();
             });
         });
     };
-    // Change color to random colors
-    function changeColorOnHoverRandom() {
-        const allSquares = document.querySelectorAll(".new-grid"); // Select all squares
-        allSquares.forEach(square => {
-            square.addEventListener("mouseover", () => {
-                square.style.backgroundColor = getRandomColor(); // Apply random color
-            })
-        })
-    }
 
+    // Opacity Black or Random color hover effect
+    function changeColorOnHoverOpacity(mode) {
+        const allSquares = document.querySelectorAll(".new-grid");
+    
+        allSquares.forEach(square => {
+            // Initialize the opacity attribute if not present
+            if (!square.getAttribute("data-opacity")) {
+                square.setAttribute("data-opacity", "0");
+            }
+    
+            square.addEventListener("mouseover", () => {
+                let currentOpacity = parseFloat(square.getAttribute("data-opacity"));
+    
+                // Increment opacity, max at 1
+                if (currentOpacity < 1) {
+                    currentOpacity += 0.1; // Increase opacity
+                    square.setAttribute("data-opacity", currentOpacity); // Update data attribute
+    
+                    if (mode === "black") {
+                        square.style.backgroundColor = `rgba(0, 0, 0, ${currentOpacity})`; // Black with varying opacity
+                    } else if (mode === "random") {
+                        const r = Math.floor(Math.random() * 256);
+                        const g = Math.floor(Math.random() * 256);
+                        const b = Math.floor(Math.random() * 256);
+                        square.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${currentOpacity})`; // Random color with opacity
+                    }
+                }
+            });
+        });
+    };
+    
+
+    // Apply the hover effect based on the current color mode
     if (colorMode === "black") {
-        changeColorOnHover();
+        changeColorOnHover("black");
     } else if (colorMode === "random") {
-        changeColorOnHoverRandom();
+        changeColorOnHover("random");
+    } else if (colorMode === "opacity-black") {
+        changeColorOnHoverOpacity("black");
+    } else if (colorMode === "random-opacity") {
+        changeColorOnHoverOpacity("random");
     }
     // Make sure it fits inside the grid-container
     resizeSquares(totalDiv);
@@ -153,12 +195,10 @@ makeNewGrid(totalDiv, "black");
 // 02. Make the squares change size to fit in the 700x700 grid-container we made  DONE
 // 03. Implement hover for default color                                          DONE                                         
 // 04. Implement Random Colors function                                           DONE
-// 05. Implement Opacity Increase function
-// 06. Implement Random Colors + Opacity Increase function
-// 07. Finish design, make every selection button toggleable, instead of requiring a full reset
-// 08. We could also add hotkeys to each button on the interface
-// 09. Add a paint mode, which yes, will require remaking the whole thing, but it doesn't matter, this project is cool enough for that
-// 10. Push and enable live preview 
+// 05. Implement Opacity Increase function                                        DONE
+// 06. Implement Random Colors + Opacity Increase function                        DONE
+// 07. Finish design
+// 08. Push and enable live preview 
 
 /*
 newInput.addEventListener("keydown", (e) => {
