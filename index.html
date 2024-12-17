@@ -20,19 +20,21 @@
                 placeholder="Enter a number (<=100)"
                 oninput="validateInput(this)">
             <button class="make-squares-btn">Make squares</button>
+            <button class="clear-btn">Clear board</button>
             <button class="reset-btn">Reset (16 x 16, Black)</button>
-            <button class="current current-input">16 x 16</button>
+            <button class="current current-input">Scale: 16 x 16</button>
         </div>
         <div class="grid-container">
             <div class="new-grid-container">
                 <!-- Where the generated div goes -->   
             </div>
         </div>
-        <div class="mode-box">    
-            <button class="random-colors-btn">Random Colors</button>
+        <div class="mode-box">
+            <button class="black-color-btn">Default (Black)</button>  
+            <button class="random-color-btn">Random Colors</button>
             <button class="opacity-increase-btn">Opacity Increase</button>
             <button class="random-and-opacity-btn">Random + Opacity</button>
-            <button class="current current-mode">Default (Black)</button>       
+            <button class="current-color-mode">Mode: Default</button>  
         </div>
     </div>
     <footer>

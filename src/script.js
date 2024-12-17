@@ -5,7 +5,8 @@ const newInput = document.querySelector(".numberInput");
 const gridContainer = document.querySelector('.new-grid-container');
 const makeSquares = document.querySelector(".make-squares-btn");
 const resetButton = document.querySelector(".reset-btn");
-const randomColorsButton = document.querySelector(".random-colors-btn");
+const blackColorButton = document.querySelector(".black-color-btn");
+const randomColorButton = document.querySelector(".random-color-btn");
 const opacityIncreaseButton = document.querySelector(".opacity-increase-btn");
 const randomAndOpacityButton = document.querySelector(".random-and-opacity-btn")
 
@@ -41,8 +42,28 @@ newInput.addEventListener("keydown", (e) => {
     }
 });
 
+// Change to color black
+blackColorButton.addEventListener("click", () => {
+    makeNewGrid(totalDiv, "black");
+    document.querySelector(".current-color-mode").innerText = `Mode: Black`;
+});
+
+// Change to random color
+randomColorButton.addEventListener("click", () => {
+    makeNewGrid(totalDiv, "random");
+    document.querySelector(".current-color-mode").innerText = `Mode: Random`;
+});
+
+// Generate a random RGB color
+function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+};
+
 // Generate the grid
-function makeNewGrid(totalDiv) {
+function makeNewGrid(totalDiv, colorMode = "black") {
     gridContainer.innerHTML = ""; // Clear previous grid
 
     // Create and append the squares
@@ -61,17 +82,8 @@ function makeNewGrid(totalDiv) {
             square.style.height = `${squareSize}px`;
         });
     };
-    // Add hover effect to all squares
-    // This is working, now all we have left to do is add the different modes:
-    // Random colors
-    // Opacity increase
-    // Random colors + opacity increase
-
-    // I think a more proper way to do it would be to add a "mode" function or variable
-    // that can turn itself true or false, depending on which buttons are clicked
-    // then the true mode is the one currently on, while the falsy modes don't do anything
-    // that way we can have an easy way to distinguish which colors to use for the hovering
-    // and maybe it would look more organized
+    // Paiting functions
+    // Change color to black
     function changeColorOnHover() {
         const allSquares = document.querySelectorAll(".new-grid"); // Select all squares
         allSquares.forEach(square => {
@@ -79,14 +91,24 @@ function makeNewGrid(totalDiv) {
                 square.style.backgroundColor = "black"; // Change color on hover
             });
         });
+    };
+    // Change color to random colors
+    function changeColorOnHoverRandom() {
+        const allSquares = document.querySelectorAll(".new-grid"); // Select all squares
+        allSquares.forEach(square => {
+            square.addEventListener("mouseover", () => {
+                square.style.backgroundColor = getRandomColor(); // Apply random color
+            })
+        })
     }
 
+    if (colorMode === "black") {
+        changeColorOnHover();
+    } else if (colorMode === "random") {
+        changeColorOnHoverRandom();
+    }
     // Make sure it fits inside the grid-container
     resizeSquares(totalDiv);
-
-    // Change color on hover *after* grid creation
-    changeColorOnHover();
-
 };
 
 // Prevent the input from being lower than 0 and higher than 100
@@ -107,18 +129,18 @@ function readInput(newValue) {
 };
 
 // Default grid and mode starting as you open the application
-makeNewGrid(totalDiv);
+makeNewGrid(totalDiv, "black");
 
 // Todo:
-// 1. Make the input change the number of squares made                           DONE
-// 2. Make the squares change size to fit in the 700x700 grid-container we made  DONE
-// 3. Implement hover for default color (we can either change classes to do this, or directly change the div's background color through javascript)
-// 4. Implement hover for changing color
-// 5. Implement Random Colors function
-// 6. Implement Opacity Increase function
-// 7. Implement Random Colors + Opacity Increase function
-// 8. Finish design
-// 9. We could also add hotkeys to each button on the interface
+// 01. Make the input change the number of squares made                           DONE
+// 02. Make the squares change size to fit in the 700x700 grid-container we made  DONE
+// 03. Implement hover for default color                                          DONE                                         
+// 04. Implement Random Colors function
+// 05. Implement Opacity Increase function
+// 06. Implement Random Colors + Opacity Increase function
+// 07. Finish design, make every selection button toggleable, instead of requiring a full reset
+// 08. We could also add hotkeys to each button on the interface
+// 09. Add a paint mode, which yes, will require remaking the whole thing, but it doesn't matter, this project is cool enough for that
 // 10. Push and enable live preview 
 
 /*
