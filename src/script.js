@@ -21,16 +21,18 @@ document.addEventListener("DOMContentLoaded", () => {
 makeSquares.addEventListener("click", () => {
     const newValue = parseInt(newInput.value, 10) || 16; // Default to 16
     readInput(newValue);
-    document.querySelector(".current-input").textContent = `${newValue} x ${newValue}`;
+    document.querySelector(".current-input").textContent = `Scale ${newValue} x ${newValue}`;
     newInput.value = "";
+    document.querySelector(".current-color-mode").innerText = `Mode: Black`;
 });
 
 // Resets back to default mode
 resetButton.addEventListener("click", () => {
     totalDiv = 16;
-    document.querySelector(".current-input").textContent = `${totalDiv} x ${totalDiv}`;
+    document.querySelector(".current-input").textContent = `Scale ${totalDiv} x ${totalDiv}`;
     newInput.value = "";
     makeNewGrid(totalDiv);
+    document.querySelector(".current-color-mode").innerText = `Mode: Black`;
 });
 
 // Keydown event for the input field
@@ -150,7 +152,7 @@ makeNewGrid(totalDiv, "black");
 // 01. Make the input change the number of squares made                           DONE
 // 02. Make the squares change size to fit in the 700x700 grid-container we made  DONE
 // 03. Implement hover for default color                                          DONE                                         
-// 04. Implement Random Colors function
+// 04. Implement Random Colors function                                           DONE
 // 05. Implement Opacity Increase function
 // 06. Implement Random Colors + Opacity Increase function
 // 07. Finish design, make every selection button toggleable, instead of requiring a full reset
