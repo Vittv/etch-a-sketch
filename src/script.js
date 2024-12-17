@@ -42,6 +42,7 @@ newInput.addEventListener("keydown", (e) => {
         readInput(newValue);
         newInput.value = "";
         document.querySelector(".current-input").textContent = `Scale: ${newValue} x ${newValue}`;
+        document.querySelector(".current-color-mode").innerText = `Mode: Black`
     }
 });
 
@@ -199,14 +200,3 @@ makeNewGrid(totalDiv, "black");
 // 06. Implement Random Colors + Opacity Increase function                        DONE
 // 07. Finish design
 // 08. Push and enable live preview 
-
-/*
-newInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-        makeNewGrid();
-    }
-});
-makeSquaresButton = document.getElementById(".make-squares-btn");
-makeSquaresButton.addEventListener("click", () => {
-    makeNewGrid();
-}); */

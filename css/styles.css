@@ -9,53 +9,99 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgb(230, 183, 200);
 }
 
 h1 {
-    font-size: 60px;
-    padding: 20px;
-    font-style: italic;
+    font-size: 98px;
+    padding: 5px;
+    font-family: 'Poppins';
+    color: rgb(74, 50, 11)
 }
+
+.span-e {
+    color: red;
+}
+
+.span-t {
+    color: rgb(47, 255, 106);
+}
+
+.span-c {
+    color: rgb(73, 146, 248);
+   
+}
+
+.span-h {
+    color: yellow;
+}
+
 
 .container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    border: 4px solid red;
+    border: 4px solid rgb(103, 9, 9);
+    border-radius: 10px;
+    background-color: rgb(135, 13, 13);
 }
 
 .input-box {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    border: 4px solid blue;
     height: 700px;
     width: 300px;
+    border-right: 1px solid grey;
 }
 
 .mode-box {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    border: 4px solid blue;
     height: 700px;
     width: 300px;
+    border-left: 1px solid grey;
 }
 
 input {
     padding: 10px;
     font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid grey;
 }
 
-button {
-    padding: 10px;
+button,
+.current-input,
+.current-color-mode {
     font-size: 20px;
+    padding: 10px;
+    background-color: rgb(238, 238, 238);
+    color: rgb(35, 36, 39);
+    text-align: center;
+    text-transform: lowercase;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.3s ease;
+    border-radius: 5px;
+    border: 1px solid grey;
 }
 
-.current {
+button:hover {
+    transform: scale(1.05);
+    color: rgb(45, 56, 123);
+    border: 1px solid yellow;
+}
+
+.current-input,
+.current-color-mode {
     font-size: 20px;
     padding: 10px;
+    border: 2px solid rgb(103, 9, 9);
+    background-color: rgb(173, 8, 8);
+    color: rgb(244, 242, 242);
+    font-weight: 700;
 }
 
 /* grid */
@@ -66,6 +112,7 @@ button {
     align-items: center;
     height: 700px;
     width: 700px;
+    background-color: rgb(244, 242, 242);
 }
 
 .new-grid-container {
@@ -77,12 +124,12 @@ button {
 
 .new-grid {
     background-color: rgb(244, 242, 242);
-    border: 1px solid rgb(193, 192, 192);
+    border: 1px solid rgb(187, 187, 187);
 }
 
 /* footer */
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     background-color: rgb(35, 36, 39);
     color: white;
