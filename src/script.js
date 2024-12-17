@@ -198,5 +198,5 @@ makeNewGrid(totalDiv, "black");
 // 04. Implement Random Colors function                                           DONE
 // 05. Implement Opacity Increase function                                        DONE
 // 06. Implement Random Colors + Opacity Increase function                        DONE
-// 07. Finish design
-// 08. Push and enable live preview 
+// 07. Finish design                                                              DONE
+// 08. Push and enable live preview                                               DONE
