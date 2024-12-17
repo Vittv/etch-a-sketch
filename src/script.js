@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 makeSquares.addEventListener("click", () => {
     const newValue = parseInt(newInput.value, 10) || 16; // Default to 16
     readInput(newValue);
-    document.querySelector(".current-input").textContent = `Scale ${newValue} x ${newValue}`;
+    document.querySelector(".current-input").textContent = `Scale: ${newValue} x ${newValue}`;
     newInput.value = "";
     document.querySelector(".current-color-mode").innerText = `Mode: Black`;
 });
@@ -29,7 +29,7 @@ makeSquares.addEventListener("click", () => {
 // Resets back to default mode
 resetButton.addEventListener("click", () => {
     totalDiv = 16;
-    document.querySelector(".current-input").textContent = `Scale ${totalDiv} x ${totalDiv}`;
+    document.querySelector(".current-input").textContent = `Scale: ${totalDiv} x ${totalDiv}`;
     newInput.value = "";
     makeNewGrid(totalDiv);
     document.querySelector(".current-color-mode").innerText = `Mode: Black`;
@@ -41,7 +41,7 @@ newInput.addEventListener("keydown", (e) => {
         const newValue = parseInt(newInput.value, 10) || 16; // Default to 16;
         readInput(newValue);
         newInput.value = "";
-        document.querySelector(".current-input").textContent = `${newValue} x ${newValue}`;
+        document.querySelector(".current-input").textContent = `Scale: ${newValue} x ${newValue}`;
     }
 });
 
