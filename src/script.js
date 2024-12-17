@@ -4,6 +4,7 @@ let totalDiv = 16;
 const newInput = document.querySelector(".numberInput");
 const gridContainer = document.querySelector('.new-grid-container');
 const makeSquares = document.querySelector(".make-squares-btn");
+const clearButton = document.querySelector(".clear-btn");
 const resetButton = document.querySelector(".reset-btn");
 const blackColorButton = document.querySelector(".black-color-btn");
 const randomColorButton = document.querySelector(".random-color-btn");
@@ -54,6 +55,11 @@ randomColorButton.addEventListener("click", () => {
     document.querySelector(".current-color-mode").innerText = `Mode: Random`;
 });
 
+// Clear board
+clearButton.addEventListener("click", () => {
+    makeNewGrid(totalDiv, currentColorMode);
+})
+
 // Generate a random RGB color
 function getRandomColor() {
     const r = Math.floor(Math.random() * 256);
@@ -62,9 +68,18 @@ function getRandomColor() {
     return `rgb(${r}, ${g}, ${b})`;
 };
 
+// Clear and regenerate the grid with the current settings
+function clearBoard() {
+    gridContainer.innerHTML = ""; // Clear the grid container
+    makeNewGrid(totalDiv, currentColorMode);
+};
+
+let currentColorMode = "black";
+
 // Generate the grid
 function makeNewGrid(totalDiv, colorMode = "black") {
     gridContainer.innerHTML = ""; // Clear previous grid
+    currentColorMode = colorMode; // Update the current color mode
 
     // Create and append the squares
     for (let i = 0; i < totalDiv * totalDiv; i++ ) {
@@ -82,8 +97,8 @@ function makeNewGrid(totalDiv, colorMode = "black") {
             square.style.height = `${squareSize}px`;
         });
     };
-    // Paiting functions
-    // Change color to black
+
+    // Hover functions
     function changeColorOnHover() {
         const allSquares = document.querySelectorAll(".new-grid"); // Select all squares
         allSquares.forEach(square => {
